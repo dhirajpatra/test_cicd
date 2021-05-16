@@ -1,0 +1,22 @@
+variables:
+  example: this is an example variable
+
+stages:
+  - stage1
+  - stage2
+
+build:
+  stage: stage1
+  script:
+    - echo "we are currently in stage 1"
+    - echo "these are the contents of test.py"
+    - cat test.py
+    - echo $example
+
+test:
+  stage: stage2
+  script:
+    - echo "we are currently in stage 2"
+    - echo "running python script"
+    - python test.py
+    
