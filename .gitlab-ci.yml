@@ -1,4 +1,4 @@
-image: "python:3.7"
+# image: "python:3.7"
 
 variables:
   example: this is an example variable
@@ -6,7 +6,7 @@ variables:
 stages:
   - stage1
   - stage2
-  - Static Analysis
+  # - Static Analysis
 
 build:
   stage: stage1
@@ -30,9 +30,8 @@ test:
     - ls -l
     - export PYTHONPATH="$PYTHONPATH:."
     - python -c "import sys;print(sys.path)"
-    - pytest -q test_app.py
-
-flake8:
-  stage: Static Analysis
-  script:
-    - flake8 --max-line-length=120 bild/*.py
+    - pytest
+# flake8:
+#   stage: Static Analysis
+#   script:
+#     - flake8 --max-line-length=120 bild/*.py
