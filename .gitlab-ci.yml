@@ -15,8 +15,14 @@ build:
 
 test:
   stage: stage2
+  before_script:
+    - echo "before script we can download, install any software required"
   script:
     - echo "we are currently in stage 2"
     - echo "running python script"
     - python test.py
-    
+    # Lint code
+    - pylint src
+    - flake8 src --statistics --count
+    # Test code
+    - pytest
