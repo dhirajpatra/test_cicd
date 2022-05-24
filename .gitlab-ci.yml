@@ -1,28 +1,38 @@
+image: "python:3.7"
+
 variables:
   example: this is an example variable
 
 stages:
   - stage1
   - stage2
+  - Static Analysis
 
 build:
   stage: stage1
   script:
     - echo "we are currently in stage 1"
-    - echo "these are the contents of test.py"
-    - cat test.py
+    - echo "these are the contents of app.py"
+    - cat app.py
     - echo $example
 
 test:
   stage: stage2
   before_script:
     - echo "before script we can download, install any software required"
+    - python --version
+    - pip install -r requirements.txt
   script:
     - echo "we are currently in stage 2"
     - echo "running python script"
-    - python test.py
-    # Lint code
-    - pylint src
-    - flake8 src --statistics --count
-    # Test code
-    - pytest
+    - python app.py
+    - pwd
+    - ls -l
+    - export PYTHONPATH="$PYTHONPATH:."
+    - python -c "import sys;print(sys.path)"
+    - pytest -q test_app.py
+
+flake8:
+  stage: Static Analysis
+  script:
+    - flake8 --max-line-length=120 bild/*.py
