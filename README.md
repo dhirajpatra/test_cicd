@@ -3,7 +3,7 @@
 This is a simple application to learn how to use the CI/CD with Gitlab.
 
 ## Description
-If you want to sart CI/CD with your Docker based application. Or want to make the CI/CD pipeline for your project with deployment into Docker. Then this will be starting point of your journey.
+If you want to sart CI/CD with python application. Or want to make the CI/CD pipeline for your project with deployment. Then this will be starting point of your journey.
 
 ## Badges
 On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
